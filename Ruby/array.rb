@@ -30,15 +30,15 @@ p ary.length
 puts
 
 
-alpbe = ('a'..'z').to_a
-p alpbe
+alphabet = ('a'..'z').to_a
+p alphabet
 
-ran = alpbe[0..-20]
-p ran
-ran.shuffle
-p ran
-ran.shuffle!
-p ran
+random = alphabet[0..-20]
+p random
+random.shuffle
+p random
+random.shuffle!
+p random
 
 
 

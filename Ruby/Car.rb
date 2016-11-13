@@ -1,29 +1,15 @@
 # オブジェクトの配列にしようと思って途中です
 class NewCar
   attr_accessor :name, :price
-#  MAX = 5 # 定数
   @@n = 0
 
   def initialize
-#    @count = 0 # 要素数のカウンター
     @name  = ""
     @price = ""
   end
 
-  def addCar(name, price)
-
-=begin
-    if @count < MAX
-      @car[@count] = {name.to_sym => price} # ハッシュ追加
-      @count += 1
-    else
-      # shiftで要素が減るが代入（追加）で要素が増えるため@countの値はそのまま
-      @car.shift # 先頭要素削除
-      @car[@count-1] = {name.to_sym => price} # 末尾にハッシュ追加 [@MAX-1]とどっちがいいのかね？
-    end
-=end
+  def add_car(name, price)
   end
-
 end
 
 car = Array.new(10)
@@ -38,12 +24,12 @@ loop do # 無限ループ
     print 'price > '
     car[@@n].price = gets.to_i
     @@n += 1
-#    car.addCar(carname, price)
+#    car.add_car(carname, price)
 
   when 2 then
-    car.showCar
+    car.show_car
     print('deletenumber > ')
-    #car.deleteCar(gets.chomp.to_i)
+    #car.delete_car(gets.chomp.to_i)
     car.delete_at(gets.to_i-1)
 
   when 3 then
@@ -70,11 +56,11 @@ class MyCar
   def initialize
     @count = 0 # 要素数のカウンター
     @car = [] # Array.new()
-    # Array.new(5) や Array.new(5){Hash.new()} は showCar でエラーになるためNG
+    # Array.new(5) や Array.new(5){Hash.new()} は show_car でエラーになるためNG
   end
 
   # 入力された値番号で削除対象を決めるため配列にハッシュを追加
-  def addCar(name, price)
+  def add_car(name, price)
     if @count < MAX
       @car[@count] = {name.to_sym => price} # ハッシュ追加
       @count += 1
@@ -85,7 +71,7 @@ class MyCar
     end
   end
 
-  def deleteCar(select)
+  def delete_car(select)
     if 0 < select && select <= @count #入力が0より大きく要素数以下なら
       puts "#{@car.delete_at(select-1)}を削除しました" # delete_at()の返り値は消した要素
       @count -= 1
@@ -94,7 +80,7 @@ class MyCar
     end
   end
 
-  def showCar
+  def show_car
     @car.each_with_index do |item, number| #配列に対してのeach_with_index
       item.each do |key,value| #配列の要素 = item = ハッシュに対してのeach
         puts "#{number+1} 車名:#{key} 価格:#{value}"
@@ -115,15 +101,15 @@ loop do # 無限ループ
     carname = gets.chomp
     print 'price > '
     price = gets.to_i
-    car.addCar(carname, price)
+    car.add_car(carname, price)
 
   when 2 then
-    car.showCar
+    car.show_car
     print('deletenumber > ')
-    car.deleteCar(gets.to_i)
+    car.delete_car(gets.to_i)
 
   when 3 then
-    car.showCar
+    car.show_car
 
   when 4 then
     break
