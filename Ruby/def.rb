@@ -16,7 +16,7 @@ p sample"Suki"
 sample; sample(); sample 'hoge'
 
 
-def connect(a, n=0, m=1)
+def concat(a, n=0, m=1)
   #(n...m).each { |i| a[i] = "!" }
   # for i in n..m do a[i] = "!" end
   #a.fill("!", n...m)
@@ -30,6 +30,6 @@ end
 x = ('J'..'R').to_a
 p x
 
-p connect(x, 2, 6)
+p concat(x, 2, 6)
 p ('J'..'R').to_a.fill("!",2...6).reverse.join # で終了
 #p ('a'..'z').to_a.join
